@@ -1,0 +1,26 @@
+STATcube
+
+"Wanderungen innerhalb Österreichs ab 2002 (Q)"
+"Jahr und Bundesland (NUTS 2) - Herkunftsort nach Wanderungen innerhalb Österreichs"
+"Zählt: Wanderungen innerhalb Österreichs"
+
+"Jahr";"Bundesland (NUTS 2) - Herkunftsort";"Werte";"Anzahl";"Anmerkungen";
+"2025";"Burgenland <AT11>";"Wanderungen innerhalb Österreichs";17820;
+"2025";"Kärnten <AT21>";"Wanderungen innerhalb Österreichs";41989;
+"2025";"Niederösterreich <AT12>";"Wanderungen innerhalb Österreichs";112230;
+"2025";"Oberösterreich <AT31>";"Wanderungen innerhalb Österreichs";113036;
+"2025";"Salzburg <AT32>";"Wanderungen innerhalb Österreichs";45122;
+"2025";"Steiermark <AT22>";"Wanderungen innerhalb Österreichs";104044;
+"2025";"Tirol <AT33>";"Wanderungen innerhalb Österreichs";57171;
+"2025";"Vorarlberg <AT34>";"Wanderungen innerhalb Österreichs";33846;
+"2025";"Wien <AT13>";"Wanderungen innerhalb Österreichs";219384;
+"2025";"Nicht klassifizierbar <0>";"Wanderungen innerhalb Österreichs";-;
+
+
+Symbol;Beschreibung
+"Q";"STATcube – Statistische Datenbank von STATISTIK AUSTRIA"
+"Wanderungen innerhalb Österreichs ab 2002";".) Datenprovenienz: Die Wanderungsstatistik wird von der Statistik Austria erstellt und basiert auf den Daten (An- und Abmeldungen) des Zentralen Melderegisters (ZMR). Wanderungen innerhalb Österreichs (Binnenwanderungen) sind Hauptwohnsitzverlegungen innerhalb Österreichs. Neben Wanderungen über administrative Grenzen (z.B. Bundesland-, Bezirks- oder Gemeindegrenzen) hinweg werden auch Hauptwohnsitz- wechsel innerhalb derselben Gemeinde von der Wanderungsstatistik erfasst. Weitere Metadaten: https://www.statistik.at/fileadmin/shared/QM/Standarddokumentationen/B_2/std_b_wanderungsstatistik.pdf weitere Informationen finden Sie unter: Weitere Metadaten: https://www.statistik.at/statistiken/bevoelkerung-und-soziales/bevoelkerung/migration-und-einbuergerung .) Gesetzliche Grundlagen: Die Wanderungsstatistik ist eine im Sinne des Par.4.(1) BstatG angeordnete Statistik. Die Datenübermittlung der für die Wanderungsstatsitik benötigten Meldedaten ist im Par.16b(6) MeldeG geregelt. .) Aktualisierung: Jährlich im Mai für die Wanderungsstatistik des Vorjahres. Letzte Änderung des Würfels [29.06.2026] .) Bearbeitungsnachweis: Direktion Bevölkerung - Demographie Für allgemeine Anfragen: Tel.: +43 1 711 28-7070 Bei Spezialfragen wenden Sie sich bitte schriftlich an demographie@statistik.gv.at"
+"Gemeinde des Herkunftsortes (Vergröberung über Politischen Bezirk)";"Die Ausprägungen dieses Gliederungskriteriums enthalten neben dem Namen der Gemeinde auch - in gebrochener Klammer - deren fünfstellige Kennzahl. Ein '^' bei der Kennzahl bedeutet, dass die entsprechende Ausprägung im gegenwärtigen Gliederungsstand des Kriteriums nicht aktuell ist, aus Rücksicht auf ältere Daten jedoch mitgeführt werden muss."
+
+
+(c) Copyright Statistics Austria
