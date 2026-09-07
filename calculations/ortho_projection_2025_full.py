@@ -1,6 +1,7 @@
 import sys
+import pathlib
 
-sys.path += ["../data", "../src"]
+sys.path += [str(pathlib.Path(__file__).parent / ".." / "data"), str(pathlib.Path(__file__).parent / ".." / "src")]
 
 import numpy as np
 

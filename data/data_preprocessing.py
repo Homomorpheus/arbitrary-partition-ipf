@@ -1,10 +1,9 @@
 import csv
 import numpy as np
 import random
-import os
+import pathlib
 
-
-dir_path = os.path.dirname(os.path.realpath(__file__)) + "/"
+dir_path = pathlib.Path(__file__).parent
 
 
 def extract_block(filename, left, upper, right, lower, delimiter=";", encoding="cp1252"):
@@ -81,12 +80,12 @@ def extract_names(filename, left, upper, right, lower):
     names = [element[0] for element in names]
     return names
 
-names_age = extract_names(dir_path + "names_age.csv", 1, 7, 2, -8)
-names_places = extract_names(dir_path + "names_places.csv", 2, 10, 3, -26)
+names_age = extract_names(dir_path / "names_age.csv", 1, 7, 2, -8)
+names_places = extract_names(dir_path / "names_places.csv", 2, 10, 3, -26)
 
-origin_dest = to_table_2d_in_3d(dir_path + "origin_destination.csv", 0, 1, names_places, names_places)
-dest_age = to_table_2d_in_3d(dir_path + "age_dest.csv", 2, 1, names_age, names_places)
-origin_age = to_table_2d_in_3d(dir_path + "age_origin.csv", 2, 0, names_age, names_places)
+origin_dest = to_table_2d_in_3d(dir_path / "origin_destination.csv", 0, 1, names_places, names_places)
+dest_age = to_table_2d_in_3d(dir_path / "age_dest.csv", 2, 1, names_age, names_places)
+origin_age = to_table_2d_in_3d(dir_path / "age_origin.csv", 2, 0, names_age, names_places)
 
 def random_names(n, names):
     names_map = {name:index for index, name in enumerate(names)}
@@ -127,16 +126,16 @@ def extract_table(*args, **kwargs):
 
     return table
 
-names_places_federal = extract_names(dir_path + "names_places_federal.csv", 1, 7, 2, -10)
-federal_values = extract_table(dir_path + "full_federal.csv", names_places_federal, 2, names_places_federal, 4, names_age, 0, value_index=5,  left=0, upper=7, right=-1, lower=-9, remove_nonclassifiable=True)
+names_places_federal = extract_names(dir_path / "names_places_federal.csv", 1, 7, 2, -10)
+federal_values = extract_table(dir_path / "full_federal.csv", names_places_federal, 2, names_places_federal, 4, names_age, 0, value_index=5,  left=0, upper=7, right=-1, lower=-9, remove_nonclassifiable=True)
 federal_cuts = (np.cumsum([9, 10, 25, 18, 6, 21, 9, 4, 23][:-1]), np.cumsum([9, 10, 25, 18, 6, 21, 9, 4, 23][:-1]), np.arange(1, len(names_age)))
 
 
 num_districts = 23
 names_places_vienna = names_places[-23:]
-names_age_5_group = extract_names(dir_path + "names_age_5_group.csv", left=0, upper=7, right=-1, lower=-8)
+names_age_5_group = extract_names(dir_path / "names_age_5_group.csv", left=0, upper=7, right=-1, lower=-8)
 vienna_cuts = (np.arange(1, num_districts), np.arange(1, num_districts), np.arange(5, 20 * 5, 5))
-vienna_values = extract_table(dir_path + "vienna.csv", names_places_vienna, 2, names_places_vienna, 3, names_age_5_group, 0, value_index=4, left=0, upper=1, right=None, lower=None, remove_nonclassifiable=True, delimiter=",", encoding="utf8")
+vienna_values = extract_table(dir_path / "vienna.csv", names_places_vienna, 2, names_places_vienna, 3, names_age_5_group, 0, value_index=4, left=0, upper=1, right=None, lower=None, remove_nonclassifiable=True, delimiter=",", encoding="utf8")
 vienna_subtable = (slice(-23, None), slice(-23, None), slice(None))
 
 

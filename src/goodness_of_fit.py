@@ -96,3 +96,24 @@ def approx_deviance_nan_masked_subtable(data, estimator, df):
     p_val = 1 - sc.stats.chi2.cdf(approx_dev, df=df)
 
     return approx_dev, p_val
+
+def cell_wise_error_subtable(data, estimator):
+    # relative error of estimator in comparison to nan-padded data,
+    # where data is not nan,
+    # as well as
+    # absolute error where the data is zero
+
+    rel_errors = []
+    abs_errors_to_data_zero = []
+
+    it = np.nditer(data, flags=["multi_index"])
+    for _ in it:
+        index = it.multi_index
+        if np.isnan(data[index]):
+            continue
+        elif np.isclose(data[index], 0):
+            abs_errors_to_data_zero.append(np.abs(estimator[index]))
+        else:
+            rel_errors.append(np.abs(estimator[index] - data[index]) / data[index])
+
+    return np.array(rel_errors), np.array(abs_errors_to_data_zero)
