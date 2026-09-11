@@ -61,9 +61,7 @@ def df_with_federal(mle, marginals, tiles):
     # number of cells
     T_e = np.size(mle)
     # number of independent parameters estimated
-    T_p = 1 \
-    + (mle.shape[0] - 1) + (mle.shape[1] - 1) + (mle.shape[2] - 1) \
-    + (mle.shape[0] - 1) * (mle.shape[1] - 1) + (mle.shape[0] - 1) * (mle.shape[2] - 1) + (mle.shape[1] - 1) * (mle.shape[2] - 1) \
+    T_p = (mle.shape[0] - 1) * (mle.shape[1] - 1) + (mle.shape[0] - 1) * (mle.shape[2] - 1) + (mle.shape[1] - 1) * (mle.shape[2] - 1) \
     + (tiles.values.shape[0] - 1) * (tiles.values.shape[1] - 1) * (tiles.values.shape[2] - 1)
     assert T_p != 1
 
@@ -78,8 +76,10 @@ def df_with_federal(mle, marginals, tiles):
     tiles_submarginals = [np.sum(tiles.values, axis=(0, 1)), np.sum(tiles.values, axis=(1, 2)), np.sum(tiles.values, axis=(0, 2))]
     z_p = np.sum(np.isclose(marginals[0].value, 0.)) + np.sum(np.isclose(marginals[1].value, 0.)) + np.sum(np.isclose(marginals[2].value, 0.)) \
     - np.sum(np.isclose(sub_marginals[0], 0.)) - np.sum(np.isclose(sub_marginals[1], 0.)) - np.sum(np.isclose(sub_marginals[2], 0.)) \
+    + 0 \
+    \
     + np.sum(np.isclose(tiles.values, 0.)) \
-    - np.sum(np.isclose(tiles_marginals[0], 0.)) - np.sum(np.isclose(tiles_marginals[1], 0.)) - np.sum(np.isclose(tiles_marginals[1], 0.)) \
+    - np.sum(np.isclose(tiles_marginals[0], 0.)) - np.sum(np.isclose(tiles_marginals[1], 0.)) - np.sum(np.isclose(tiles_marginals[2], 0.)) \
     + np.sum(np.isclose(tiles_submarginals[0], 0.)) + np.sum(np.isclose(tiles_submarginals[1], 0.)) + np.sum(np.isclose(tiles_submarginals[2], 0.))
     assert not np.isclose(np.sum(mle), 0.)
 
