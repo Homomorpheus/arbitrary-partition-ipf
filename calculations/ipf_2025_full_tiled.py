@@ -5,6 +5,7 @@ sys.path += [str(pathlib.Path(__file__).parent / ".." / "data"), str(pathlib.Pat
 
 import numpy as np
 import matplotlib.pyplot as plt
+import scipy as sc
 
 import data_preprocessing as data_pre
 import ipf
@@ -100,6 +101,23 @@ if __name__=="__main__":
     sep="",
     )
 
+
+    pvals = goodness_of_fit.two_tailed_binom_test(np.sum(mle), mle/np.sum(mle), masked_subtable)
+    print(f"p-value mean: {np.mean(pvals)}")
+    fig, ax = plt.subplots()
+    ax.boxplot(pvals, label="p-values", whis=(0, 100))
+    fig.legend()
+    plt.show()
+
+    print(f"Statistics for the {len(pvals)} p-values:")
+    print(f"lower whisker={np.min(pvals)},")
+    print(f"lower quartile={np.quantile(pvals, 0.25)},")
+    print(f"median={np.median(pvals)},")
+    print(f"upper quartile={np.quantile(pvals, 0.75)},")
+    print(f"upper whisker={np.max(pvals)},")
+    print(f"average={np.mean(pvals)},")
+    print()
+
     rel_err, abs_err_where_true_data_zero = goodness_of_fit.cell_wise_error_subtable(masked_subtable, mle)
     fig, ax = plt.subplots(2, 2)
     ax[0, 0].boxplot(rel_err, label="Relative error", whis=(0, 100))
@@ -118,7 +136,7 @@ if __name__=="__main__":
     print(f"average={np.mean(rel_err)},")
     print()
 
-    print("Statistics for the relative error where the true data is zero:")
+    print("Statistics for the absolute error where the true data is zero:")
     print(f"lower whisker={np.min(abs_err_where_true_data_zero)},")
     print(f"lower quartile={np.quantile(abs_err_where_true_data_zero, 0.25)},")
     print(f"median={np.median(abs_err_where_true_data_zero)},")

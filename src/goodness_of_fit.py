@@ -1,11 +1,35 @@
 """
 Helper functions for computing the goodness of fit
-using the G² statistic.
+using the G² statistic or binomial tests.
 """
 
 import numpy as np
 import scipy as sc
+import tqdm
 import warnings
+
+
+def two_tailed_binom_test(n, probs_estim, sample_vals):
+    "tests if sample_val is produced by B(n,p), where sample_val is not nan and p!=0"
+
+    pvals = []
+
+    for prob_estim, sample_val in tqdm.tqdm(np.nditer((probs_estim, sample_vals)), total=np.size(probs_estim)):
+        if np.isnan(sample_val):
+            continue
+
+        if n * prob_estim > sample_val:
+            pval = sc.stats.binom.cdf(sample_val, n, prob_estim)
+        elif n * prob_estim < sample_val:
+            pval = 1 - sc.stats.binom.cdf(sample_val, n, prob_estim)
+        else:
+            pval = 1
+
+        pvals.append(pval)
+
+    return pvals
+
+
 
 
 def deviance(data: np.ndarray, estimator: np.ndarray):

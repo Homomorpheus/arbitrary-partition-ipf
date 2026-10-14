@@ -1,6 +1,8 @@
 # Iterative Proportional Fitting on arbitrary partitions
 A framework and example computations for iterative proportional fitting, generalized to partitions of the table.
 
+Requirements: numpy, sympy, tqdm
+
 The framework for iterative proportional fitting is contained in `src/ipf.py`.
 
 This repository contains functionality to
